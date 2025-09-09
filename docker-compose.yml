@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  video-api:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./metadata.json:/app/metadata.json
+    environment:
+      - SECRET_KEY=your-secret-key
+    restart: unless-stopped

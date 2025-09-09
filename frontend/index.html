@@ -1,0 +1,96 @@
+<!-- Load Cinzel font -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Video Wiz</title>
+
+  <!-- Link to external stylesheet -->
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Load main JavaScript logic-->
+  <script src="/script.js?v=2"></script>
+</head>
+<body>
+
+  <!-- Title banner -->
+  <div class="title-banner">
+    <img src="./video-wizard-banner.png" alt="VIDEO WIZ Title">
+  </div>
+
+  <!-- Tagline describing app functionality -->
+  <p id="tagline">
+    Your ultimate video toolkit: upload, transcode, and manage videos seamlessly.
+  </p>
+
+  <!-- Flex container for left and right columns -->
+  <div class="top-flex">
+
+    <!-- Left column: Login, Upload, Transcode sections -->
+    <div class="left-panel">
+
+      <!-- Login form -->
+      <section id="login">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button class="login" onclick="login()">Login</button>
+      </section>
+
+      <!-- Upload section -->
+      <section id="upload">
+        <h2>Upload Video</h2>
+        <input type="file" id="videoFile">
+        <button class="upload" onclick="upload()">Upload</button>
+
+        <!-- Upload status indicator -->
+        <div id="uploadStatus" style="display: none; margin-top: 10px;">
+          <div class="spinner"></div>
+          <span style="margin-left: 10px;">Uploading...</span>
+        </div>
+      </section>
+
+      <!-- Transcode section -->
+      <section id="transcode">
+        <h2>Transcode</h2>
+
+        <!-- Dropdown to select uploaded file -->
+        <select id="fileSelect"></select>
+
+        <!-- Transcode button triggers backend -->
+        <button class="transcode" onclick="transcode(document.getElementById('fileSelect').value)">
+          Transcode
+        </button>
+
+        <!-- Transcode status indicator -->
+        <div id="transcodeStatus" style="display: none; margin-top: 10px;">
+          <div class="spinner"></div>
+          <span style="margin-left: 10px;">Transcoding...</span>
+        </div>
+      </section>
+    </div>
+
+    <!-- Right column: Mascot image -->
+    <figure id="app-header">
+      <img
+        src="./wiz-orb-cropped.png"
+        alt="Video App Mascot Wizard"
+      >
+    </figure>
+  </div>
+
+  <!-- Uploaded files table + pagination controls -->
+  <section id="list">
+    <h2>Uploaded Files</h2>
+
+    <!-- Table dynamically populated with video previews and actions -->
+    <table id="fileTable"></table>
+
+    <!-- Pagination controls: Previous / Next + Page Indicator -->
+    <div id="pagination" style="margin-top: 20px;"></div>
+  </section>
+
+</body>
+</html>
